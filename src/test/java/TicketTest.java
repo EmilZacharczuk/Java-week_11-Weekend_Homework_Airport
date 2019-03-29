@@ -2,26 +2,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class TicketTest {
 
-    private Ticket ticket;
-    private Passenger passenger;
-    private Flight flight;
+    Ticket ticket;
+    Passenger passenger;
+    Flight flight;
 
     @Before
     public void before() {
         this.ticket = new Ticket(passenger, flight);
-//        this.flight = new Flight(plane, 22, "Frankfurt" );
-
     }
 
     @Test
 
-    public void havePassenger() {
-        passenger = new Passenger("Johny Walker");
-        assertEquals(passenger ,ticket.getPassenger());
+    public void havePassenger () {
+        assertEquals(passenger, ticket.getPassenger());
     }
+    @Test
 
+    public void haveFlight() {
+        assertEquals(flight, ticket.getFlight());
+    }
 
 }

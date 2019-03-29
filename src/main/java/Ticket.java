@@ -14,11 +14,7 @@ public class Ticket {
         return this.passenger;
     }
 
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
-    }
-
     public Flight getFlight() {
-        return flight;
+        return this.flight;
     }
 }

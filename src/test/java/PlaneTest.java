@@ -30,7 +30,7 @@ public class PlaneTest {
         assertEquals(1, this.plane.passengersCount());
     }
     @Test
-    public void canHavePassengrs() {
+    public void canHavePassengers() {
         assertEquals(0, this.plane.passengersCount());
     }
     @Test

@@ -10,7 +10,9 @@ public class FlightTest {
 
     @Before
     public void before(){
+        this.plane = new Plane(PlaneType.AIRBUS340, "British Airways");
         this.flight = new Flight(plane, 22, "Edinburgh");
+
     }
 
     @Test
@@ -20,11 +22,12 @@ public class FlightTest {
 
     @Test
     public void hasPlane() {
-        plane = new Plane(PlaneType.PIPER,"British Airways");
-        assertEquals(PlaneType.PIPER, plane.getPlaneType());
+        assertEquals(plane, flight.getPlane());
+
     }
     @Test
     public void hasDestination() {
-        assertEquals("Edinburgh", this.flight.getDestination());
+        assertEquals("Edinburgh", flight.getDestination());
     }
+
 }

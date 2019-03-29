@@ -1,4 +1,5 @@
 public class Flight {
+
     private Plane plane;
     private int flightNumber;
     private String destination;
