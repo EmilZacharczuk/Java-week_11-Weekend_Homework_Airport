@@ -13,7 +13,7 @@ public class PassengerTest {
         this.passenger = new Passenger("Johny Walker");
     }
     @Test
-    public void haveName(){
+    public void haveName() {
         assertEquals("Johny Walker", passenger.getName());
     }
 }
