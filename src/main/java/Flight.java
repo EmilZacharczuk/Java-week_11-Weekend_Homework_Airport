@@ -21,5 +21,4 @@ public class Flight {
     public String getDestination() {
         return this.destination;
     }
-
 }
