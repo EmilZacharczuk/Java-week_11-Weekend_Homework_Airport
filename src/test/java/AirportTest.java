@@ -2,7 +2,7 @@ import org.junit.Before;
 
 public class AirportTest {
 
-    private Airport airport;
+    Airport airport;
 
     @Before
     public void before() {
