@@ -34,9 +34,9 @@ public class PassengerTest {
     }
 //    @Test
 //    public void canBuyTicket() {
-//        Ticket newTicket = airport.sellTicket(passenger, flight);
-//        passenger.addTicket(newTicket);
-//        passenger.addTicket(newTicket);
+//        Ticket ticket = airport.sellTicket(passenger, flight);
+//        passenger.addTicket(ticket);
+//        passenger.addTicket(ticket);
 //        assertEquals(2, passenger.getTickets());
 //    }
 }
