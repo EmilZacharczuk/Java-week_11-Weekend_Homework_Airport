@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class AirportTest {
@@ -17,6 +19,9 @@ public class AirportTest {
         this.plane1 = new Plane(PlaneType.AIRBUS340, "British Airways");
         this.plane2 = new Plane(PlaneType.BEECHCRAFTBONANZA, "Monarch");
         this.plane3 = new Plane(PlaneType.BOEING747, "EasyJet");
+        airport.addPlane(plane1);
+        airport.addPlane(plane2);
+        airport.addPlane(plane3);
 
     }
     @Test
@@ -25,21 +30,13 @@ public class AirportTest {
     }
 
     @Test
-    public void hasHangar () {
-        assertEquals(0, airport.hangarSize());
-    }
-
-    @Test
     public void canAddPlanesToHangar () {
         airport.addPlane(plane);
-        assertEquals(1, airport.hangarSize());
+        assertEquals(4, airport.hangarSize());
     }
 
     @Test
     public void canRemovePlaneFromHangar () {
-        airport.addPlane(plane1);
-        airport.addPlane(plane2);
-        airport.addPlane(plane3);
         airport.removePlane(0);
         assertEquals(2, airport.hangarSize());
     }
@@ -53,9 +50,6 @@ public class AirportTest {
     }
     @Test
     public void canFindPlane () {
-        airport.addPlane(plane1);
-        airport.addPlane(plane2);
-        airport.addPlane(plane3);
         int index = airport.findPlane(plane1);
         assertEquals(0, index);
         int index2 = airport.findPlane(plane2);
@@ -63,16 +57,10 @@ public class AirportTest {
      }
      @Test
     public void canRemovePlaneByPlaneType() {
-         airport.addPlane(plane1);
-         airport.addPlane(plane2);
-         airport.addPlane(plane3);
          assertEquals(plane3, airport.removePlaneFromHangarByPlain(plane3));
      }
      @Test
      public void canAssignPlaneToFlight() {
-         airport.addPlane(plane1);
-         airport.addPlane(plane2);
-         airport.addPlane(plane3);
          Flight newFlight = airport.createFlight(plane, 22, "Warsaw");
          airport.assignPlaneToFlight(plane1, newFlight);
          assertEquals(plane1, newFlight.getPlane());
@@ -82,14 +70,27 @@ public class AirportTest {
 
      }
      @Test
+    public void canBookPassengerOnAFlight() {
+         Passenger passenger = new Passenger("John Wilson");
+         Flight newFlight = airport.createFlight(plane, 22, "Warsaw");
+         airport.assignPlaneToFlight(plane1, newFlight);
+         airport.bookPassenger(passenger, newFlight);
+         airport.bookPassenger(passenger, newFlight);
+         assertEquals(2, plane1.passengersCount());
+     }
+     @Test
     public void canSellTickets () {
-         airport.addPlane(plane1);
-         airport.addPlane(plane2);
-         airport.addPlane(plane3);
          Flight newFlight = airport.createFlight(plane, 45, "Berlin");
+         airport.assignPlaneToFlight(plane1, newFlight);
          Passenger newPassenger = new Passenger("Harry Berry");
          Ticket newTicket = airport.sellTicket(newPassenger, newFlight);
          assertEquals("Harry Berry", newTicket.getPassenger().getName());
          assertEquals("Berlin", newTicket.getFlight().getDestination());
+         assertEquals(1, plane1.passengersCount());
      }
+
+//     @Test void canBookInPassengers() {
+//        Passenger newPassenger = new Passenger("Johny Bean");
+//
+//     }
 }

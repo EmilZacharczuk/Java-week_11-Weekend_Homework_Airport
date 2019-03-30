@@ -47,8 +47,14 @@ public class Airport {
      }
      public Ticket sellTicket(Passenger passenger, Flight flight) {
         Ticket newTicket = new Ticket(passenger, flight);
+        bookPassenger(passenger,flight);
         return newTicket;
+
      }
 
+    public void bookPassenger(Passenger passenger, Flight flight) {
+        Plane plane = flight.getPlane();
+        plane.addPassenger(passenger);
+    }
 
 }
