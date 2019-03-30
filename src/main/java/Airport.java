@@ -45,6 +45,10 @@ public class Airport {
         Plane planeToBeAssigned = removePlaneFromHangarByPlain(plane);
         flight.setPlane(planeToBeAssigned);
      }
+     public Ticket sellTicket(Passenger passenger, Flight flight) {
+        Ticket newTicket = new Ticket(passenger, flight);
+        return newTicket;
+     }
 
 
 }

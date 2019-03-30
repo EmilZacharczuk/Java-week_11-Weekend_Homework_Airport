@@ -81,11 +81,15 @@ public class AirportTest {
          assertEquals(plane3, flight.getPlane());
 
      }
-//     @Test
-//    public void canSellTickets () {}
-//        Passenger passenger = new Passenger("John O'Hara");
-//        Flight flight1 = airport.createFlight(plane1, 34, "Warsaw");
-//
-//        Ticket ticket = new Ticket(passenger, flight1);
-//        assertEquals()
+     @Test
+    public void canSellTickets () {
+         airport.addPlane(plane1);
+         airport.addPlane(plane2);
+         airport.addPlane(plane3);
+         Flight newFlight = airport.createFlight(plane, 45, "Berlin");
+         Passenger newPassenger = new Passenger("Harry Berry");
+         Ticket newTicket = airport.sellTicket(newPassenger, newFlight);
+         assertEquals("Harry Berry", newTicket.getPassenger().getName());
+         assertEquals("Berlin", newTicket.getFlight().getDestination());
+     }
 }
