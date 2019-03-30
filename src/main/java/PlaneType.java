@@ -16,5 +16,9 @@ public enum PlaneType {
     PlaneType(int value) {
         this.value = value;
     }
+
+    public int returnValue() {
+        return this.value;
+    }
 }
 

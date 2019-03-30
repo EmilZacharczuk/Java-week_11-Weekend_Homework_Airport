@@ -46,13 +46,13 @@ public class Airport {
         flight.setPlane(planeToBeAssigned);
      }
      public Ticket sellTicket(Passenger passenger, Flight flight) {
-        Ticket newTicket = new Ticket (passenger, flight);
-        bookPassenger(passenger,flight);
-        passenger.addTicket(newTicket);
-        return newTicket;
-
+         if (!flight.getPlane().isFull()) {
+             Ticket newTicket = new Ticket(passenger, flight);
+             bookPassenger(passenger, flight);
+             passenger.addTicket(newTicket);
+             return newTicket;}
+         return null;
      }
-
     public void bookPassenger(Passenger passenger, Flight flight) {
         Plane plane = flight.getPlane();
         plane.addPassenger(passenger);
@@ -62,6 +62,4 @@ public class Airport {
         int bookings = flight.getPlane().passengersCount();
         return bookings;
     }
-
-
 }

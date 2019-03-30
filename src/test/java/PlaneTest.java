@@ -11,6 +11,7 @@ public class PlaneTest {
     @Before
     public void before() {
         this.plane = new Plane(PlaneType.PIPER, "EasyJet");
+        this.passenger = new Passenger("Johny Walker");
     }
 
     @Test
@@ -25,7 +26,6 @@ public class PlaneTest {
 
     @Test
     public void canAddPassengers() {
-        passenger = new Passenger("Johny Walker");
         plane.addPassenger(passenger);
         assertEquals(1, this.plane.passengersCount());
     }
@@ -35,11 +35,29 @@ public class PlaneTest {
     }
     @Test
     public void canRemovePassengers() {
-        passenger = new Passenger("Johny Walker");
         plane.addPassenger(passenger);
         plane.addPassenger(passenger);
         plane.removePassenger();
         assertEquals(1, this.plane.passengersCount());
     }
+    @Test
+    public void hasCapacity() {
+        plane.getPlaneCapacity();
+    }
 
+    @Test
+    public void isFull () {
+        for (int i = 0; i < 4 ; i++) {
+            plane.addPassenger(passenger);
+        }
+        assertEquals(false, plane.isFull());
+    }
+
+    @Test
+    public void isNotFull () {
+        for (int i = 0; i < plane.getPlaneCapacity() ; i++) {
+            plane.addPassenger(passenger);
+        }
+        assertEquals(true, plane.isFull());
+    }
 }

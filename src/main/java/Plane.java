@@ -29,4 +29,15 @@ public class Plane {
     public Passenger removePassenger() {
         return this.passengers.remove(0);
     }
-}
+
+    public int getPlaneCapacity () {
+        return this.planeType.returnValue();
+    }
+    public boolean isFull() {
+        if (getPlaneCapacity() == passengersCount())  {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    }
