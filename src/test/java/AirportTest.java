@@ -8,7 +8,7 @@ public class AirportTest {
     Airport airport;
     Plane plane;
     Plane plane1, plane2, plane3;
-    Flight flight;
+
 
 
     @Before
@@ -74,16 +74,18 @@ public class AirportTest {
          airport.addPlane(plane2);
          airport.addPlane(plane3);
          Flight newFlight = airport.createFlight(plane, 22, "Warsaw");
-         Plane planeToBeAssigned = airport.removePlaneFromHangarByPlain(plane1);
-         newFlight.setPlane(planeToBeAssigned);
+         airport.assignPlaneToFlight(plane1, newFlight);
          assertEquals(plane1, newFlight.getPlane());
          Flight flight = airport.createFlight(plane, 22, "Warsaw");
-         Plane planeToBeAssigned2 = airport.removePlaneFromHangarByPlain(plane3);
-         flight.setPlane(planeToBeAssigned2);
+         airport.assignPlaneToFlight(plane3, flight);
          assertEquals(plane3, flight.getPlane());
 
      }
-     @Test
-    public void canSellTickets () {}
-
+//     @Test
+//    public void canSellTickets () {}
+//        Passenger passenger = new Passenger("John O'Hara");
+//        Flight flight1 = airport.createFlight(plane1, 34, "Warsaw");
+//
+//        Ticket ticket = new Ticket(passenger, flight1);
+//        assertEquals()
 }

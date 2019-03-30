@@ -41,6 +41,10 @@ public class Airport {
         Plane foundPlane = removePlane(index);
         return foundPlane;
     }
+    public void assignPlaneToFlight(Plane plane, Flight flight) {
+        Plane planeToBeAssigned = removePlaneFromHangarByPlain(plane);
+        flight.setPlane(planeToBeAssigned);
+     }
 
 
 }

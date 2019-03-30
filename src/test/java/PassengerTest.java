@@ -7,6 +7,7 @@ public class PassengerTest {
 
 
     Passenger passenger;
+    Ticket ticket;
 
     @Before
     public void before() {
@@ -17,4 +18,13 @@ public class PassengerTest {
         assertEquals("Johny Walker", passenger.getName());
     }
     @Test
+    public void hasTicketCollection() {
+        assertEquals(0, passenger.getTickets());
+    }
+    @Test
+    public void canAddTickets() {
+        passenger.addTicket(ticket);
+        assertEquals(1, passenger.getTickets());
+
+    }
 }

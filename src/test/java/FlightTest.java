@@ -32,9 +32,9 @@ public class FlightTest {
 
     @Test
     public void canSetPlane () {
-        Plane plane2 = new Plane(PlaneType.BOEING747, "RyanAir");
-        flight.setPlane(plane2);
-        assertEquals(plane2, flight.getPlane());
+        Plane plane3 = new Plane(PlaneType.BOEING747, "RyanAir");
+        flight.setPlane(plane3);
+        assertEquals(plane3, flight.getPlane());
     }
 
 }
