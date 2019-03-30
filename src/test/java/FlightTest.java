@@ -30,4 +30,11 @@ public class FlightTest {
         assertEquals("Edinburgh", flight.getDestination());
     }
 
+    @Test
+    public void canSetPlane () {
+        Plane plane2 = new Plane(PlaneType.BOEING747, "RyanAir");
+        flight.setPlane(plane2);
+        assertEquals(plane2, flight.getPlane());
+    }
+
 }

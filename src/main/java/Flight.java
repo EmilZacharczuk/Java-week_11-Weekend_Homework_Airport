@@ -21,4 +21,8 @@ public class Flight {
     public String getDestination() {
         return this.destination;
     }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
 }

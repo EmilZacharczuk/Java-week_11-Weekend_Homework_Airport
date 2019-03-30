@@ -32,21 +32,15 @@ public class Airport {
         return flight;
     }
 
-    public int findPlaneByType (PlaneType planeType) {
-        Plane foundPlane = null;
-        int counter = 0;
-        for (Plane plane : hangar) {
-            if (plane.getPlaneType() == planeType) {
-                counter += 1;
-            }
-        }
-        return counter - 1;
+    public int findPlane (Plane plane) {
+        return this.hangar.indexOf(plane);
     }
 
-    public Plane removePlaneByPlaneType(PlaneType planeType) {
-        Integer index = findPlaneByType(planeType);
+    public Plane removePlaneFromHangarByPlain(Plane plane) {
+        Integer index = findPlane(plane);
         Plane foundPlane = removePlane(index);
         return foundPlane;
     }
+
 
 }
