@@ -8,10 +8,15 @@ public class PassengerTest {
 
     Passenger passenger;
     Ticket ticket;
+    Airport airport;
+    Flight flight;
+    Plane plane;
 
     @Before
     public void before() {
         this.passenger = new Passenger("Johny Walker");
+        this.flight = new Flight (plane, 34, "Chicago");
+        this.airport = new Airport(AirportCode.EDI);
     }
     @Test
     public void haveName() {
@@ -26,5 +31,11 @@ public class PassengerTest {
         passenger.addTicket(ticket);
         assertEquals(1, passenger.getTickets());
 
+    }
+    @Test
+    public void canBuyTicket() {
+        Ticket newTicket = airport.sellTicket(passenger, flight);
+        passenger.addTicket(newTicket);
+        assertEquals(1, passenger.getTickets());
     }
 }
