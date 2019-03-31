@@ -19,4 +19,8 @@ public class Passenger {
     public void addTicket(Ticket ticket) {
         this.tickets.add(ticket);
     }
+    public void buyTicket(Airport airport, Flight flight) {
+        Ticket ticket = airport.sellTicket(flight);
+        this.tickets.add(ticket);
+    }
 }

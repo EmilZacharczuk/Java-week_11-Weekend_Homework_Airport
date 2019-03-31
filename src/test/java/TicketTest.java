@@ -7,19 +7,14 @@ import static org.junit.Assert.assertSame;
 public class TicketTest {
 
     Ticket ticket;
-    Passenger passenger;
     Flight flight;
 
     @Before
     public void before() {
-        this.ticket = new Ticket(passenger, flight);
+        this.ticket = new Ticket(flight);
     }
 
-    @Test
 
-    public void havePassenger () {
-        assertEquals(passenger, ticket.getPassenger());
-    }
     @Test
 
     public void haveFlight() {

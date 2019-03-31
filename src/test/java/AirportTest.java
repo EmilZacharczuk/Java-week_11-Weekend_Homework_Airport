@@ -76,46 +76,51 @@ public class AirportTest {
      @Test
     public void canBookPassengerOnAFlight() {
          airport.assignPlaneToFlight(plane1, flight);
+         airport.sellTicket(flight);
+         passenger.buyTicket(airport, flight);
          airport.bookPassenger(passenger, flight);
+         airport.sellTicket(flight);
+         passenger.buyTicket(airport, flight);
          airport.bookPassenger(passenger, flight);
          assertEquals(2, plane1.passengersCount());
      }
      @Test
     public void canCreateTickets () {
          airport.assignPlaneToFlight(plane1, flight);
-         Ticket newTicket = airport.sellTicket(passenger, flight);
-         Ticket newTicket2 = airport.sellTicket(passenger, flight);
-         assertEquals("John Wilson", newTicket.getPassenger().getName());
+         Ticket newTicket = airport.sellTicket(flight);
+         Ticket newTicket2 = airport.sellTicket(flight);
          assertEquals("Warsaw", newTicket.getFlight().getDestination());
 
      }
-     @Test
-     public void canAssignPassengersToPlaneWhenSellingTicket () {
-         airport.assignPlaneToFlight(plane1, flight);
-         Ticket newTicket = airport.sellTicket(passenger, flight);
-         Ticket newTicket2 = airport.sellTicket(passenger, flight);
-         assertEquals(2, plane1.passengersCount());
-     }
+
      @Test
     public void canSellTicketToPassenger() {
          airport.assignPlaneToFlight(plane1, flight);
-         Ticket newTicket = airport.sellTicket(passenger, flight);
-         Ticket newTicket2 = airport.sellTicket(passenger, flight);
+         Ticket newTicket = airport.sellTicket(flight);
+         passenger.buyTicket(airport, flight);
+         Ticket newTicket2 = airport.sellTicket(flight);
+         passenger.buyTicket(airport, flight);
          assertEquals(2, passenger.getTickets());
      }
     @Test
     public void canCheckHowManyPassengersForEachFlight() {
         airport.assignPlaneToFlight(plane1, flight);
-        Ticket newTicket = airport.sellTicket(passenger, flight);
-        Ticket newTicket2 = airport.sellTicket(passenger, flight);
+        Ticket newTicket = airport.sellTicket(flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket2 = airport.sellTicket(flight);
+        airport.bookPassenger(passenger, flight);
         int bookings = airport.findBookings(flight);
         Passenger passenger1 = new Passenger("Harry Potter");
         Flight flight1 = new Flight (plane2, 22, "Rome");
         airport.assignPlaneToFlight(plane2, flight1);
-        Ticket newTicket3 = airport.sellTicket(passenger1, flight1);
-        Ticket newTicket4 = airport.sellTicket(passenger1, flight1);
-        Ticket newTicket5 = airport.sellTicket(passenger1, flight1);
-        Ticket newTicket6 = airport.sellTicket(passenger1, flight1);
+        Ticket newTicket3 = airport.sellTicket(flight1);
+        airport.bookPassenger(passenger1, flight1);
+        Ticket newTicket4 = airport.sellTicket(flight1);
+        airport.bookPassenger(passenger1, flight1);
+        Ticket newTicket5 = airport.sellTicket(flight1);
+        airport.bookPassenger(passenger1, flight1);
+        Ticket newTicket6 = airport.sellTicket(flight1);
+        airport.bookPassenger(passenger1, flight1);
         int bookings2 = airport.findBookings(flight1);
         assertEquals(2, bookings);
         assertEquals(4, bookings2);
@@ -124,18 +129,34 @@ public class AirportTest {
     @Test
     public void cannotOverbookFlight() {
         airport.assignPlaneToFlight(plane4, flight);
-        Ticket newTicket = airport.sellTicket(passenger, flight);
-        Ticket newTicket2 = airport.sellTicket(passenger, flight);
-        Ticket newTicket3 = airport.sellTicket(passenger, flight);
-        Ticket newTicket4 = airport.sellTicket(passenger, flight);
-        Ticket newTicket5 = airport.sellTicket(passenger, flight);
-        Ticket newTicket6 = airport.sellTicket(passenger, flight);
-        Ticket newTicket7 = airport.sellTicket(passenger, flight);
-        Ticket newTicket8 = airport.sellTicket(passenger, flight);
-        Ticket newTicket9 = airport.sellTicket(passenger, flight);
-        Ticket newTicket10 = airport.sellTicket(passenger, flight);
+        Ticket newTicket = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket1 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket2 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket3 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket4 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket5 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket6 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
+        Ticket newTicket7 = airport.sellTicket(flight);
+        passenger.buyTicket(airport, flight);
+        airport.bookPassenger(passenger, flight);
         int bookings = airport.findBookings(flight);
         assertEquals(6, bookings);
+        assertEquals(6, passenger.getTickets());
 
     }
+
 }

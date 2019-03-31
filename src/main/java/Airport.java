@@ -1,6 +1,8 @@
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Airport {
 
@@ -45,12 +47,11 @@ public class Airport {
         Plane planeToBeAssigned = removePlaneFromHangarByPlain(plane);
         flight.setPlane(planeToBeAssigned);
      }
-     public Ticket sellTicket(Passenger passenger, Flight flight) {
+     public Ticket sellTicket(Flight flight) {
          if (!flight.getPlane().isFull()) {
-             Ticket newTicket = new Ticket(passenger, flight);
-             bookPassenger(passenger, flight);
-             passenger.addTicket(newTicket);
-             return newTicket;}
+             Ticket newTicket = new Ticket(flight);
+             return newTicket;
+         }
          return null;
      }
     public void bookPassenger(Passenger passenger, Flight flight) {
